@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+ Route::get('/', function () {
     return view('welcome');
-});
+}); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/registerBook', [BookController::class, 'index']);
+Route::post('/registerBook', [BookController::class, 'store'])->name('store');
+Route::get('qrcode/{id}', [BookController::class, 'generate'])->name('generate');
