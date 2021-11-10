@@ -20,13 +20,19 @@
                 <form class="form-inline" action="{{ route('store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-2">
-                      <input type="text" class="form-control" name="name" placeholder="Masukkan Nama">
+                      <input type="text" class="form-control" name="TbSubj" placeholder="Insert Subject">
+                    </div>
+                    <div class="form-group mb-2">
+                      <input type="text" class="form-control" name="TbName" placeholder="Insert Name">
+                    </div>
+                    <div class="form-group mb-2">
+                      <input type="text" class="form-control" name="TbPublisher" placeholder="Insert Publisher">
                     </div>
                     <div class="form-group mb-2 ml-1">
-                        <input type="email" class="form-control" name="email" placeholder="Masukkan Email">
+                        <input type="number" class="form-control" name="TbYear" placeholder="Insert Year">
                       </div>
                       <div class="form-group mb-2 ml-1">
-                        <input type="number" class="form-control" name="phone" placeholder="Masukkan Nomor Telephone">
+                        <input type="number" class="form-control" name="TbCode" placeholder="Insert Code">
                       </div>
                     <button type="submit" class="btn btn-primary ml-1 mb-2">Create</button>
                   </form>
@@ -34,18 +40,22 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Publisher</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Code</th>
                         <th scope="col">QR code</th>
                       </tr>
                     </thead>
                     <tbody>
                      @foreach ($book as $book)
                      <tr>
-                        <td>{{ $book->name }}</td>
-                        <td>{{ $book->email }}</td>
-                        <td>{{ $book->phone }}</td>
+                        <td>{{ $book->TbSubj }}</td>
+                        <td>{{ $book->TbName }}</td>
+                        <td>{{ $book->TbPublisher }}</td>
+                        <td>{{ $book->TbYear }}</td>
+                        <td>{{ $book->TbCode }}</td>
                         <td>
                             <a href="{{ route('generate',$book->id) }}" class="btn btn-primary">Generate</a>
                         </td>

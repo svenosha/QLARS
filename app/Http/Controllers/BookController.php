@@ -13,16 +13,18 @@ class BookController extends Controller
     }
     public function store(Request $request){
         $book = new Book;
-        $book->name = $request->name;
-        $book->email = $request->email;
-        $book->phone = $request->phone;
+        $book->TbSubj = $request->TbSubj;
+        $book->TbName = $request->TbName;
+        $book->TbPublisher = $request->TbPublisher;
+        $book->TbYear = $request->TbYear;
+        $book->TbCode = $request->TbCode;
         $book->save();
         return back();
     }
     public function generate ($id)
     {
         $book = Book::findOrFail($id);
-        $qrcode = QrCode::size(400)->generate($book->name);
+        $qrcode = QrCode::size(400)->generate($book->TbSubj);
         return view('qrcode',compact('qrcode'));
     }
 }
