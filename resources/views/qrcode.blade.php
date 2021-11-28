@@ -21,6 +21,13 @@
         <div class="container">
             <div class="row mt-5 text-center">
                 {!! $qrcode !!}
+<?php
+            $output_file = 'C:\xampp\htdocs\QLARS\QLARS\storage\app\public\img\qr-code\img-malay.svg';
+            file_put_contents($output_file, $qrcode);
+            
+                
+
+        ?>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

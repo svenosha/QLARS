@@ -14,9 +14,9 @@ class BookController extends Controller
     public function store(Request $request){
         $book = new Book;
         $book->TbSubj = $request->TbSubj;
-        $book->TbName = $request->TbName;
+        $book->TbISBN = $request->TbISBN;
         $book->TbPublisher = $request->TbPublisher;
-        $book->TbYear = $request->TbYear;
+        $book->TbForm = $request->TbForm;
         $book->TbCode = $request->TbCode;
         $book->save();
         return back();
@@ -24,7 +24,16 @@ class BookController extends Controller
     public function generate ($id)
     {
         $book = Book::findOrFail($id);
-        $qrcode = QrCode::size(400)->generate($book->TbSubj);
+        /* $qrcode = QrCode::size(400)->generate($book->TbSubj);
         return view('qrcode',compact('qrcode'));
+        $output_file = '../../resources/img/qr-code/img-' . $id . '.png';
+        Storage::disk('local')->put($output_file, $qrcode); //storage/app/public/img/qr-code/img-1557309130.png */
+    
+        $qrcode = QrCode::size(200)
+                 ->generate($book->TbSubj);
+                 return view('qrcode',compact('qrcode'));
+                //$output_file = '..app/public/img/qr-code/img-' . $id . '.png';
+                //Storage::disk('local')->put($output_file, $qrcode); //storage/app/public/img/qr-code/img-1557309130.png
     }
+
 }
