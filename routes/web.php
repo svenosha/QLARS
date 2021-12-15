@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+ Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/registerStud', function () {
+    return view('registerStud');
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+
+//Route::get('/registerBook', 'App\Http\Controllers\BookController@index');
+// Route::post('/registerBook', 'App\Http\Controllers\BookController@store');
+Route::get('/registerBook', [BookController::class, 'index']);
+Route::post('/registerBook', [BookController::class, 'store'])->name('store');
+Route::get('qrcode/{id}', [BookController::class, 'generate'])->name('generate');
+
+Route::get('insert', 'App\Http\Controllers\registerStud@insertform');
+Route::post('create', 'App\Http\Controllers\registerStud@insert'); 
+
+/* Route::post('/registerStud', [registerStud::class, 'insertform'])->name('insert');
+Route::post('/registerStud', [registerStud::class, 'insert'])->name('create'); */
+
+
+Route::get('/viewTextbook', 'App\Http\Controllers\viewTextbookController@index');
