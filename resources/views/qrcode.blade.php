@@ -22,7 +22,7 @@
             <div class="row mt-5 text-center">
                 {!! $qrcode !!}
 <?php
-            $output_file = 'C:\xampp\htdocs\QLARS\QLARS\storage\app\public\img\qr-code\img-malay.svg';
+            $output_file = 'C:\xampp\htdocs\QLARS\QLARS\storage\app\public\img\qr-code\img-chinese.svg';
             file_put_contents($output_file, $qrcode);
             
                 
