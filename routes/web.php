@@ -23,6 +23,9 @@ Route::get('/registerStud', function () {
     return view('registerStud');
 });
 
+Route::get('/scanqr', function () {
+    return view('scanqrcode');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
