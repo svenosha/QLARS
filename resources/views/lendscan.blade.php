@@ -7,7 +7,7 @@
 </head>
 <body>
   
-    <h1>Scan QR Code </h1>
+    <h1>Lend TextBook Scan </h1>
     
     <video id="preview"></video>
     <script type="text/javascript">
@@ -30,9 +30,16 @@
     <form class="form-inline" action="retrieve" method="POST">
       @csrf
       <div class="form-group mb-2">
-        <input type="text" class="form-control" id='id' readonly="">
+        <input type="text" class="form-control" id='id' name='BookID' readonly="">
       </div>
-    
+    </form>
+
+    <form action = "/lscan/<?php echo $students[0]->StdID; ?>" method = "post">
+    <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+    <input type = 'submit' value = "Return" />
+      </form>
+
+      
    
 </body>
 </html>

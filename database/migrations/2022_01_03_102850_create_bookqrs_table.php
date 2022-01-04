@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentsTable extends Migration
+class CreateBookqrsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->string('StdID');
-            $table->string('StdName');
-            $table->string('StdPassword');
-            $table->string('StdEmail');
-            $table->bigInteger('StdPhone');
-            $table->string('StdClass');
+        Schema::create('bookqrs', function (Blueprint $table) {
+            $table->id();
+            $table->QRCode();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('bookqrs');
     }
 }
