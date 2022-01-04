@@ -13,7 +13,7 @@
     <script type="text/javascript">
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
-        document.getElementById("id").value = content; // Pass the scanned content value to an input field
+        document.getElementById("TBookID").value = content; // Pass the scanned content value to an input field
         
       });
       Instascan.Camera.getCameras().then(function (cameras) {
@@ -27,17 +27,15 @@
       });
     </script>
     
-    <form class="form-inline" action="retrieve" method="POST">
+    <form class="form-inline" action="{{ route('lend') }}" method="POST">
       @csrf
       <div class="form-group mb-2">
-        <input type="text" class="form-control" id='id' name='BookID' readonly="">
+        Textbook Code:<input type="text" class="form-control" id='TBookID' name='TBookID' readonly="">
+        Student ID: <input type="text"  class="form-control" id="StdID" name="StdID" value="{{ old('StdID') }}" required>
+        <button type="submit" class="btn btn-sm btn-info">Lend</button>
       </div>
     </form>
 
-    <form action = "/lscan/<?php echo $students[0]->StdID; ?>" method = "post">
-    <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-    <input type = 'submit' value = "Return" />
-      </form>
 
       
    

@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 
 class QRCode extends Controller
 {
-    public function retrieve(Request $request)
-
-    {
-        $qrcode->id = $request->id;
-        $tbook = DB::select('select * from books where ');
-        return view('viewTextBooks', ['tbooks'=>$tbook]);
+    public function lend(Request $request){
+        
+        $TBookID=$request->TBookID;
+        $StdID=$request->StdID;
+        $update = DB::table('books')
+                ->where('id', $TBookID)
+                ->update(['StdID'=> $StdID,'TBStatus'=>'Lend']);
+                return back();  
     }
 }

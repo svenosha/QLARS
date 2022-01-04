@@ -23,6 +23,10 @@ Route::get('/registerStud', function () {
     return view('registerStud');
 });
 
+Route::get('/lendscan', function () {
+    return view('lendscan');
+});
+
 //Route::get('/scanqr', function () {
     //return view('scanqrcode');
 //});
@@ -51,4 +55,4 @@ Route::get('/viewStudents', 'App\Http\Controllers\viewStudentController@index');
 Route::get('scanqr/{StdID}', 'App\Http\Controllers\viewStudentController@returns')->name('returns'); 
 Route::get('lscan/{StdID}', 'App\Http\Controllers\viewStudentController@lends')->name('lends'); 
 
-Route::post('retrieve', 'App\Http\Controllers\QRCode@retrieve')->name('retrieve'); 
+Route::post('/lendscan', 'App\Http\Controllers\QRCode@lend')->name('lend'); 
