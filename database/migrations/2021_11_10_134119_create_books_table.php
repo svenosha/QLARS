@@ -19,7 +19,6 @@ class CreateBooksTable extends Migration
             $table->string('TbISBN');
             $table->string('TbPublisher');
             $table->bigInteger('TbForm');
-            $table->bigInteger('TbCode');
             $table->timestamps();
         });
     }

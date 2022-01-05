@@ -19,7 +19,6 @@ class CreateTextbooksTable extends Migration
             $table->string("isbn");
             $table->string("yearPublished");
             $table->string("form");
-            $table->string("code");
             $table->timestamps();
         });
     }

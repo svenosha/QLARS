@@ -19,21 +19,22 @@
     <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Subject</th>
-                        <th scope="col">ISBN</th>
-                        <th scope="col">Form</th>
-                        <th scope="col">Publisher</th>
-                        <th scope="col">QR Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No</th>
+                        <th scope="col">Return</th>
                       </tr>
                     </thead>
                     <tbody>
-                     @foreach ($tbooks as $row)
+                     @foreach ($students as $row)
                      <tr>
-                        <td>{{ $row->TbSubj }}</td>
-                        <td>{{ $row->TbISBN }}</td>
-                        <td>{{ $row->TbForm }}</td>
-                        <td>{{ $row->TbPublisher }}</td>
-                        <td>{!!$row->QRCode!!}</td>
+                        <td>{{ $row->StdName }}</td>
+                        <td>{{ $row->StdClass }}</td>
+                        <td>{{ $row->StdEmail }}</td>
+                        <td>{{ $row->StdPhone }}</td>
+                        <td><a href="{{ route('returns',$row->StdID) }}" class="btn btn-primary">Return</a></td>
+                        <td><a href="{{ route('lends',$row->StdID) }}" class="btn btn-primary">Lend</a></td>
                       </tr>
                      @endforeach
                     </tbody>

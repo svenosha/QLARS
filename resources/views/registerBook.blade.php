@@ -32,7 +32,7 @@
                         <input type="number" class="form-control" name="TbForm" placeholder="Insert Form">
                       </div>
                       <div class="form-group mb-2 ml-1">
-                        <input type="number" class="form-control" name="TbCode" placeholder="Insert Code">
+                        <input type="number" class="form-control" name="quantity" id='quantity' placeholder="Insert Quantity">
                       </div>
                     <button type="submit" class="btn btn-primary ml-1 mb-2">Create</button>
                   </form>
@@ -46,21 +46,26 @@
                         <th scope="col">Publisher</th>
                         <th scope="col">Code</th>
                         <th scope="col">QR Code</th>
+                        <th scope="col">Quantity</th>
                       </tr>
                     </thead>
                     <tbody>
                      @foreach ($book as $row)
+                     
                      <tr>
                         <td>{{ $row->TbSubj }}</td>
                         <td>{{ $row->TbISBN }}</td>
                         <td>{{ $row->TbForm }}</td>
                         <td>{{ $row->TbPublisher }}</td>
-                        <td>{{ $row->TbCode }}</td>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->quantity }}</td>
                         <td>
                         <a href="{{ route('generate',$row->id) }}" class="btn btn-primary">Generate</a>
                         </td>
                       </tr>
+
                      @endforeach
+
                     </tbody>
                   </table>
             </div>

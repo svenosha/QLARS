@@ -23,6 +23,13 @@ Route::get('/registerStud', function () {
     return view('registerStud');
 });
 
+Route::get('/lendscan', function () {
+    return view('lendscan');
+});
+
+//Route::get('/scanqr', function () {
+    //return view('scanqrcode');
+//});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -44,3 +51,8 @@ Route::post('/registerStud', [registerStud::class, 'insert'])->name('create'); *
 
 
 Route::get('/viewTextbook', 'App\Http\Controllers\viewTextbookController@index');
+Route::get('/viewStudents', 'App\Http\Controllers\viewStudentController@index');
+Route::get('scanqr/{StdID}', 'App\Http\Controllers\viewStudentController@returns')->name('returns'); 
+Route::get('lscan/{StdID}', 'App\Http\Controllers\viewStudentController@lends')->name('lends'); 
+
+Route::post('/lendscan', 'App\Http\Controllers\QRCode@lend')->name('lend'); 
