@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Students;
+use App\Models\User;
 use DB;
 
 class registerStud extends Controller
@@ -13,12 +14,15 @@ class registerStud extends Controller
         return view ('registerStud', ['stud' => $stud]);
     }
     public function insert(Request $request){
-        $StdName = $request->input('StdName');
-        $StdPhone = $request->input('StdPhone');
-        $StdPassword = $request->input('StdPassword');
-        $StdClass = $request->input('StdClass');
-        $StdEmail = $request->input('StdEmail');
-        $stud=array('StdName'=>$StdName,'StdPhone'=>$StdPhone,'StdPassword'=>$StdPassword,'StdClass'=>$StdClass,'StdEmail'=>$StdEmail);
+        $StdName = $request->input('name');
+        $StdPhone = $request->input('phone');
+        $StdID = $request->input('id');
+        $StdPassword = $request->input('password');
+        $StdClass = $request->input('class');
+        $StdEmail = $request->input('email');
+        $stud=array('StdName'=>$StdName,'StdID'=>$StdID,'StdPhone'=>$StdPhone,'StdPassword'=>$StdPassword,'StdClass'=>$StdClass,'StdEmail'=>$StdEmail);
+        $stud1=array('name'=>$StdName,'password'=>$StdPassword,'email'=>$StdEmail);
+        DB::table('users')->insert($stud1);
         DB::table('students')->insert($stud);
         echo "Record Succesfully Inserted<br/>";
         echo '<a href = "/insert"> Click Here</a> to go back';

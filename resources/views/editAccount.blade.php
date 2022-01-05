@@ -24,7 +24,8 @@
                         <th scope="col">Class</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone No</th>
-                        
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,8 @@
                         <td>{{ $row->StdClass }}</td>
                         <td>{{ $row->StdEmail }}</td>
                         <td>{{ $row->StdPhone }}</td>
+                        <td><a href= 'editStd/{{ $row->StdID}}' class="btn btn-primary">Update</a></td>
+                        <td><a href='deleteStd/{{ $row->StdID}}' class="btn btn-primary">Delete</a></td>
                       </tr>
                      @endforeach
                     </tbody>

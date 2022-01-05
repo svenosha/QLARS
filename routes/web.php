@@ -19,9 +19,25 @@ use App\Http\Controllers\BookController;
     return view('welcome');
 });
 
+Route::get('/manageAccount', function () {
+    return view('manageAccount');
+});
+
+Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->middleware('role:admin');
+Route::get('/student_dashboard', 'App\Http\Controllers\Student\DashboardController@index')->middleware('role:student');
+
 Route::get('/registerStud', function () {
     return view('registerStud');
 });
+
+Route::get('insert', 'App\Http\Controllers\manageAccountController@insertform');
+Route::post('create', 'App\Http\Controllers\manageAccountController@insert'); 
+Route::get('/viewStudents', 'App\Http\Controllers\manageAccountController@index');
+Route::get('/editAccount', 'App\Http\Controllers\manageAccountController@edit');
+
+Route::get('editStd/{StdID}', 'App\Http\Controllers\manageAccountController@editStd');
+Route::post('editStd/{StdID}', 'App\Http\Controllers\manageAccountController@updateStd');
+Route::get('deleteStd/{StdID}', 'App\Http\Controllers\manageAccountController@deleteStd');
 
 Route::get('/lendscan', function () {
     return view('lendscan');
@@ -43,7 +59,7 @@ Route::get('/registerBook', [BookController::class, 'index']);
 Route::post('/registerBook', [BookController::class, 'store'])->name('store');
 Route::get('qrcode/{id}', [BookController::class, 'generate'])->name('generate');
 
-Route::get('insert', 'App\Http\Controllers\registerStud@insertform');
+/*Route::get('insert', 'App\Http\Controllers\registerStud@insertform');
 Route::post('create', 'App\Http\Controllers\registerStud@insert'); 
 
 /* Route::post('/registerStud', [registerStud::class, 'insertform'])->name('insert');
@@ -56,3 +72,6 @@ Route::get('scanqr/{StdID}', 'App\Http\Controllers\viewStudentController@returns
 Route::get('lscan/{StdID}', 'App\Http\Controllers\viewStudentController@lends')->name('lends'); 
 
 Route::post('/lendscan', 'App\Http\Controllers\QRCode@lend')->name('lend'); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
