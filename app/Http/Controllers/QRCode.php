@@ -16,6 +16,6 @@ class QRCode extends Controller
         $update = DB::table('books')
                 ->where('id', $TBookID)
                 ->update(['StdID'=> $StdID,'TBStatus'=>'Lend']);
-                return back();  
+                return redirect()->back()->withInput();
     }
 }

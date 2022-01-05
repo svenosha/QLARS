@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +29,10 @@
     </script>
     
     <form class="form-inline" action="{{ route('lend') }}" method="POST">
-      @csrf
+    {{ csrf_field() }}
       <div class="form-group mb-2">
-        Textbook Code:<input type="text" class="form-control" id='TBookID' name='TBookID' readonly="">
-        Student ID: <input type="text"  class="form-control" id="StdID" name="StdID" value="{{ old('StdID') }}" required>
+        Textbook Code:<input type="text" class="form-control" id="TBookID" name="TBookID" readonly="">
+        Student ID: <input type="text"  class="form-control" id="StdID" name="StdID" value= "{{ old('StdID') }}" required>
         <button type="submit" class="btn btn-sm btn-info">Lend</button>
       </div>
     </form>
