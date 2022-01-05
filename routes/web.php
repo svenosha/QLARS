@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\manageTextbookController;
 
 
 /*
@@ -43,6 +43,14 @@ Route::get('/lendscan', function () {
     return view('lendscan');
 });
 
+Route::get('/manageTextbook', function () {
+    return view('manageTextbook');
+});
+
+Route::get('/registerBook', [manageTextbookController::class, 'index']);
+Route::post('/registerBook', [manageTextbookController::class, 'store'])->name('store');
+Route::get('qrcode/{id}', [manageTextbookController::class, 'generate'])->name('generate');
+
 //Route::get('/scanqr', function () {
     //return view('scanqrcode');
 //});
@@ -55,9 +63,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //Route::get('/registerBook', 'App\Http\Controllers\BookController@index');
 // Route::post('/registerBook', 'App\Http\Controllers\BookController@store');
-Route::get('/registerBook', [BookController::class, 'index']);
-Route::post('/registerBook', [BookController::class, 'store'])->name('store');
-Route::get('qrcode/{id}', [BookController::class, 'generate'])->name('generate');
+
 
 /*Route::get('insert', 'App\Http\Controllers\registerStud@insertform');
 Route::post('create', 'App\Http\Controllers\registerStud@insert'); 
