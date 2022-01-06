@@ -19,6 +19,7 @@
             
                 <form class="form-inline" action="{{ route('store') }}" method="POST">
                     @csrf
+                    
                     <div class="form-group mb-2">
                       <input type="text" class="form-control" name="TbSubj" placeholder="Insert Subject">
                     </div>
@@ -52,7 +53,6 @@
                     </thead>
                     <tbody>
                      @foreach ($book as $row)
-                     
                      <tr>
                         <td>{{ $row->TbSubj }}</td>
                         <td>{{ $row->TbISBN }}</td>

@@ -66,4 +66,5 @@ class manageAccountController extends Controller
         echo "Record deleted successfully.<br/>";
         echo '<a href = "/editAccount">Click Here</a> to go back.';
      }
+ 
 }

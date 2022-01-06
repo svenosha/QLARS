@@ -39,10 +39,6 @@ Route::get('editStd/{StdID}', 'App\Http\Controllers\manageAccountController@edit
 Route::post('editStd/{StdID}', 'App\Http\Controllers\manageAccountController@updateStd');
 Route::get('deleteStd/{StdID}', 'App\Http\Controllers\manageAccountController@deleteStd');
 
-Route::get('/lendscan', function () {
-    return view('lendscan');
-});
-
 Route::get('/manageTextbook', function () {
     return view('manageTextbook');
 });
@@ -51,6 +47,20 @@ Route::get('/registerBook', [manageTextbookController::class, 'index']);
 Route::post('/registerBook', [manageTextbookController::class, 'store'])->name('store');
 Route::get('qrcode/{id}', [manageTextbookController::class, 'generate'])->name('generate');
 
+Route::get('/textbookStatus', 'App\Http\Controllers\manageTextbookController@index1');
+
+Route::get('/manageReturnLend', function () {
+    return view('manageReturnLend');
+});
+
+Route::get('/lendscan', function () {
+    return view('lendscan');
+});
+Route::post('/lendscan', 'App\Http\Controllers\manageReturnLendController@lend')->name('lend'); 
+Route::get('/returnscan', function () {
+    return view('returnscan');
+});
+Route::post('/returnscan', 'App\Http\Controllers\manageReturnLendController@return')->name('return'); 
 //Route::get('/scanqr', function () {
     //return view('scanqrcode');
 //});
@@ -77,7 +87,5 @@ Route::get('/viewStudents', 'App\Http\Controllers\viewStudentController@index');
 Route::get('scanqr/{StdID}', 'App\Http\Controllers\viewStudentController@returns')->name('returns'); 
 Route::get('lscan/{StdID}', 'App\Http\Controllers\viewStudentController@lends')->name('lends'); 
 
-Route::post('/lendscan', 'App\Http\Controllers\QRCode@lend')->name('lend'); 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
