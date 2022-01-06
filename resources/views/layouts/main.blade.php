@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,7 +22,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+            
+                <a class="navbar-brand" href="{{ url('/') }}"><img src="../img/slogo.png" alt="HTML5 Icon" style="width:50px;height:50px;">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -33,15 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/manageAccount') }}">Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/manageTextbook') }}">Textbook</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/manageReturnLend') }}">Return and Lending</a>
-                        </li>
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
