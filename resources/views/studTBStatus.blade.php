@@ -1,13 +1,13 @@
 
 
-@extends('layouts.app')
+@extends('layouts.sapp')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Print Textbook QR') }}</div>
+                <div class="card-header">{{ __('Textbook Borrowed') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

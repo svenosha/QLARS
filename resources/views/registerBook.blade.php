@@ -32,6 +32,9 @@
                     <div class="form-group mb-2 ml-1">
                         <input type="number" class="form-control" name="TbForm" placeholder="Insert Form">
                       </div>
+                      <div class="form-group mb-2">
+                      <input type="text" class="form-control" name="TbPrice" placeholder="Insert Price">
+                    </div>
                       <div class="form-group mb-2 ml-1">
                         <input type="number" class="form-control" name="quantity" id='quantity' placeholder="Insert Quantity">
                       </div>
@@ -46,6 +49,7 @@
                         <th scope="col">Form</th>
                         <th scope="col">Publisher</th>
                         <th scope="col">Code</th>
+                        <th scope="col">Price</th>
                         <th scope="col">QR Code</th>
 
                         
@@ -59,6 +63,7 @@
                         <td>{{ $row->TbForm }}</td>
                         <td>{{ $row->TbPublisher }}</td>
                         <td>{{ $row->id}}</td>
+                        <td>{{ $row->TbPrice}}</td>
                         <td>
                         <a href="{{ route('generate',$row->id) }}" class="btn btn-primary">Generate</a>
                         </td>

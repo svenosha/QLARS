@@ -1,5 +1,4 @@
 
-
 @extends('layouts.app')
 
 @section('content')
@@ -23,8 +22,7 @@
                         <th scope="col">ISBN</th>
                         <th scope="col">Form</th>
                         <th scope="col">Publisher</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">QR Code</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -35,18 +33,21 @@
                         <td>{{ $row->TbISBN }}</td>
                         <td>{{ $row->TbForm }}</td>
                         <td>{{ $row->TbPublisher }}</td>
-                        <td>{{ $row->TbPrice }}</td>
-                        <td>{{ $row->TbStatus}}</td>
+                        <td>{!!$row->QRCode!!}</td>
                       </tr>
                      @endforeach
                     </tbody>
                   </table>
                 </div>
 
-                
+                <a href="{{ url('/prnpriview') }}" class="btnprn btn">Print Preview</a></center>
+                <script type="text/javascript">
+                $(document).ready(function(){
+                $('.btnprn').printPage();
+                });
+                </script>
             </div>
         </div>
     </div>
 </div>
 @endsection
-

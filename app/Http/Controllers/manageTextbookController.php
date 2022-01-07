@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\Book;
+use App\Models\User;
 use App\Models\qrbooks;
+use App\Models\Students;
+use App\Models\Fine;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class manageTextbookController extends Controller
 {
@@ -19,6 +23,7 @@ class manageTextbookController extends Controller
         $quantity=$request->quantity;
         for($x =0; $x<$quantity;$x++){
         $book = new Book;
+        $book->TbPrice = $request->TbPrice;
         $book->TbSubj = $request->TbSubj;
         $book->TbISBN = $request->TbISBN;
         $book->TbPublisher = $request->TbPublisher;
@@ -54,8 +59,49 @@ class manageTextbookController extends Controller
 
     public function index1()
      {
-         $tbook = DB::select('select books.*, qrbooks.* from books join qrbooks on books.id = qrbooks.id');
-         return view('viewTextBooks', ['tbooks'=>$tbook]);
+         $tbooks = DB::select('select books.*, qrbooks.* from books join qrbooks on books.id = qrbooks.id');
+         return view('viewTextBooksQR', ['tbooks'=>$tbooks]);
      }
+
+     public function index2(){
+        $tbooks = DB::select('select * from books');
+        return view ('textbookStatus', ['tbooks' => $tbooks]);
+    }
+
+    public function viewStudFine()
+    {
+        $students = DB::select('select * from students');
+        return view('viewStudFine', ['students'=>$students]);
+    }
+
+    public function viewFines($id)
+
+    {
+        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine=?',[$id,'Not Paid']);
+        return view('viewFine', ['fine'=>$fine]);
+    }
+
+    //Students
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function stdlend()
+
+    {
+        $id= Auth::id();
+        $tbooks = DB::select('select * from books where StdID =?',[$id]);
+        return view('studTBStatus',['tbooks'=>$tbooks]);
+
+    }
+    
+    public function viewFine()
+    {
+        $id= Auth::id();
+        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine=?',[$id,'Not Paid']);
+        return view('viewFine', ['fine'=>$fine]);
+    }
 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sapp')
 
 @section('content')
 <div class="container">
@@ -16,35 +16,37 @@
 
                     {{ __('Hello STUDENT, You are logged in!') }}
 
-                    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-               
-            <a href="{{ url('/manageAccount') }}" type ="button">Manage Account</a>
+                    <table style=" width:100%;">
+            <tr>
+                <td style="border:1px solid white; padding:30px;"><center>
+                <div class="py-12">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                            <img src="../img/account.jpg" alt="Manage Account" style="width:100px;height:100px;">
+                            <br>
+                            <a href="{{ url('/manageAccountS') }}" type ="button">Manage Account</a>
             
-            </div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-               
-            <a href="{{ url('/manageTextbook') }}" type ="button">Manage Textbook</a>
-            
-            </div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-               
-            <a href="{{ url('/manageReturnLend') }}" type ="button">Manage Return and Lending</a>
-            
-            </div>
-        </div>
-    </div>
+                        </div>
+                    </div>
+                </div>
+                </td>
+                <td style="border:1px solid white; padding:30px;"><center> 
+                <div class="py-12">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <img src="../img/textbooks.jpg" alt="Manage Textbook" style="width:100px;height:100px;">
+                            <br>
+                        
+                        <a href="{{ url('/manageTextbookS') }}" type ="button">Manage Textbook</a>
+                        
+                        </div>
+                    </div>
+                </div>
+                </td>
+                
+            </tr>
+        </table>
+        
 </div>
 
                 </div>

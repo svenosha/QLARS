@@ -26,6 +26,10 @@ Route::get('/manageAccount', function () {
 Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->middleware('role:admin');
 Route::get('/student_dashboard', 'App\Http\Controllers\Student\DashboardController@index')->middleware('role:student');
 
+Route::get('/manageAccount', function () {
+    return view('manageAccount');
+});
+
 Route::get('/registerStud', function () {
     return view('registerStud');
 });
@@ -35,9 +39,12 @@ Route::post('create', 'App\Http\Controllers\manageAccountController@insert');
 Route::get('/viewStudents', 'App\Http\Controllers\manageAccountController@index');
 Route::get('/editAccount', 'App\Http\Controllers\manageAccountController@edit');
 
-Route::get('editStd/{StdID}', 'App\Http\Controllers\manageAccountController@editStd');
-Route::post('editStd/{StdID}', 'App\Http\Controllers\manageAccountController@updateStd');
-Route::get('deleteStd/{StdID}', 'App\Http\Controllers\manageAccountController@deleteStd');
+Route::get('editStd/{id}', 'App\Http\Controllers\manageAccountController@editStd');
+Route::post('editStd/{id}', 'App\Http\Controllers\manageAccountController@updateStd');
+Route::get('deleteStd/{id}', 'App\Http\Controllers\manageAccountController@deleteStd');
+
+Route::get('lendTB/{id}', 'App\Http\Controllers\manageAccountController@lendTB');
+
 
 Route::get('/manageTextbook', function () {
     return view('manageTextbook');
@@ -47,7 +54,11 @@ Route::get('/registerBook', [manageTextbookController::class, 'index']);
 Route::post('/registerBook', [manageTextbookController::class, 'store'])->name('store');
 Route::get('qrcode/{id}', [manageTextbookController::class, 'generate'])->name('generate');
 
-Route::get('/textbookStatus', 'App\Http\Controllers\manageTextbookController@index1');
+Route::get('/viewTextBooksQR', 'App\Http\Controllers\manageTextbookController@index1');
+Route::get('/textbookStatus', 'App\Http\Controllers\manageTextbookController@index2');
+
+Route::get('/viewStudFine', 'App\Http\Controllers\manageTextbookController@viewStudFine');
+Route::get('viewFine/{id}', 'App\Http\Controllers\manageTextbookController@viewFines');
 
 Route::get('/manageReturnLend', function () {
     return view('manageReturnLend');
@@ -61,14 +72,35 @@ Route::get('/returnscan', function () {
     return view('returnscan');
 });
 Route::post('/returnscan', 'App\Http\Controllers\manageReturnLendController@return')->name('return'); 
-//Route::get('/scanqr', function () {
-    //return view('scanqrcode');
-//});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+//Student
+
+Route::get('/manageAccountS', function () {
+    return view('manageAccountS');
+});
+
+Route::get('/viewAccount', 'App\Http\Controllers\manageAccountController@viewAcc');
+
+Route::get('/manageTextbookS', function () {
+    return view('manageTextbookS');
+});
+Route::get('studTBStatus', 'App\Http\Controllers\manageTextbookController@stdlend');
+
+Route::get('/viewFine', 'App\Http\Controllers\manageTextbookController@viewFine');
+
+Route::get('/payFine', 'App\Http\Controllers\managePaymentController@viewFine');
+
+
+Route::get('/confirmPayment', function () {
+    return view('confirmPayment');
+});
+
+
+// Route::post('/', 'App\Http\Controllers\managePaymentController@updateFine')->name('updateFine'); 
 
 
 //Route::get('/registerBook', 'App\Http\Controllers\BookController@index');

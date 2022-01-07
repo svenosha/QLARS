@@ -1,13 +1,11 @@
-
-
-@extends('layouts.app')
+@extends('layouts.sapp')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Print Textbook QR') }}</div>
+                <div class="card-header">{{ __('View Fine For Textbook Borrowed') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,35 +16,27 @@
                     <table class="table">
                     <thead>
                       <tr>
+                        
                         <th scope="col">Subject</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">ISBN</th>
                         <th scope="col">Form</th>
-                        <th scope="col">Publisher</th>
+                        <th scope="col">Condition</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                     @foreach ($tbooks as $row)
+                     @foreach ($fine as $row)
                      <tr>
                         <td>{{ $row->TbSubj }}</td>
-                        <td>{{ $row->id }}</td>
-                        <td>{{ $row->TbISBN }}</td>
                         <td>{{ $row->TbForm }}</td>
-                        <td>{{ $row->TbPublisher }}</td>
+                        <td>{{ $row->TbCon }}</td>
                         <td>{{ $row->TbPrice }}</td>
-                        <td>{{ $row->TbStatus}}</td>
-                      </tr>
+                        </tr>
                      @endforeach
                     </tbody>
                   </table>
                 </div>
-
-                
             </div>
         </div>
     </div>
 </div>
 @endsection
-

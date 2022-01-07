@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form method="POST" action="/editStd/<?php echo $students[0]->StdID; ?>" method="POST">
+                    <form method="POST" action="/editStd/<?php echo $students[0]->id; ?>" method="POST">
                         @csrf
 
                         <div class="row mb-3">
@@ -34,7 +34,7 @@
                             <label for="id" class="col-md-4 col-form-label text-md-end">{{ __('Student ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value= '<?php echo $students[0]->StdID; ?>' required autocomplete="id" autofocus readonly="">
+                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value= '<?php echo $students[0]->id; ?>' required autocomplete="id" autofocus readonly="">
 
                                 @error('id')
                                     <span class="invalid-feedback" role="alert">

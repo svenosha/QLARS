@@ -104,6 +104,14 @@
       <div class="form-group mb-2">
         Textbook Code:<input type="text" class="form-control" id="TBookID" name="TBookID" readonly="">
         Student ID: <input type="text"  class="form-control" id="StdID" name="StdID" value= "{{ old('StdID') }}" required>
+        <br>
+        <label for="cars">Condition:</label>
+            <select id="TbCon" name="TbCon">
+            <option value="None">None</option>
+            <option value="Lost">Lost</option>
+            <option value="Damage">Damage</option>
+            </select>
+        <br>
         <button type="submit" class="btn btn-sm btn-info">Return</button>
       </div>
     </form>
