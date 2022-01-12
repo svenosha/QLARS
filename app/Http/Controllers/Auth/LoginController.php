@@ -28,19 +28,22 @@ class LoginController extends Controller
      * @var string
      */
     public function redirectTo() {
-        $role = Auth::user()->role; 
-        switch ($role) {
-          case 'admin':
-            return '/admin_dashboard';
+      switch(Auth::user()->role){
+        case 'admin':
+        $this->redirectTo = '/admin_dashboard';
+        return $this->redirectTo;
             break;
-          case 'student':
-            return '/student_dashboard';
-            break; 
-      
-          default:
-            return '/home'; 
-          break;
-        }
+        case 'student':
+            $this->redirectTo = '/student_dashboard';
+            return $this->redirectTo;
+            break;
+        
+        default:
+            $this->redirectTo = '/login';
+            return $this->redirectTo;
+    }
+     
+    // return $next($request);
       }
 
     /**

@@ -22,9 +22,11 @@ use App\Http\Controllers\manageTextbookController;
 Route::get('/manageAccount', function () {
     return view('manageAccount');
 });
-
-Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->middleware('role:admin');
-Route::get('/student_dashboard', 'App\Http\Controllers\Student\DashboardController@index')->middleware('role:student');
+Auth::routes();
+Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('admin')->middleware('admin');
+Route::get('/student_dsahboard', 'App\Http\Controllers\Student\DashboardController@index')->name('student')->middleware('student');
+/* Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->middleware('role:admin');
+Route::get('/student_dashboard', 'App\Http\Controllers\Student\DashboardController@index')->middleware('role:student'); */
 
 Route::get('/manageAccount', function () {
     return view('manageAccount');
