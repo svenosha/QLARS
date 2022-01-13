@@ -56,11 +56,11 @@ class manageAccountController extends Controller
         $StdName = $request->input('name');
         $StdPhone = $request->input('phone');
         $StdID = $request->input('id');
-        $StdPassword = $request->input('password');
+        $StdPassword = Hash::make($request->input('password'));
         $StdClass = $request->input('class');
         $StdEmail = $request->input('email');
         DB::update('update students set StdName =?,StdPhone =?, StdEmail =?, StdPassword =?, StdClass =? where id =?',[$StdName,$StdPhone,$StdEmail,$StdPassword,$StdClass,$StdID]);
-        DB::update('update users set name =? where id =?',[$StdName,$StdID]);
+        DB::update('update users set name =?, email =?, password =? where id =?',[$StdName,$StdEmail,$StdPassword,$StdID]);
         echo "Record updated successfully.<br/>";
         echo '<a href = "/editAccount">Click Here</a> to go back.';
     }

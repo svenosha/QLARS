@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class manageTextbookController extends Controller
 {
     public function index(){
-        $book = DB::select('select * from books order by id desc');
+        $book = DB::select('select * from books where TbGen= ? order by id desc',['No']);
         return view ('registerBook', ['book' => $book]);
     }
 
@@ -29,6 +29,7 @@ class manageTextbookController extends Controller
         $book->TbPublisher = $request->TbPublisher;
         $book->TbForm = $request->TbForm;
         $book->save();
+        
         }
         return back();
     
@@ -49,6 +50,7 @@ class manageTextbookController extends Controller
         $qr->QRCode=$qrcode;
         $qr->id=$saveqr;
         $qr->save();
+        $qr = DB::update('update books set TbGen = ? where id =?',['Yes',$id]);
 
         $book = Book::all();
 
@@ -80,6 +82,7 @@ class manageTextbookController extends Controller
         $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine=?',[$id,'Not Paid']);
         return view('viewFine', ['fine'=>$fine]);
     }
+    
 
     //Students
 
@@ -97,11 +100,11 @@ class manageTextbookController extends Controller
 
     }
     
-    public function viewFine()
+    public function viewFineStud()
     {
         $id= Auth::id();
         $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine=?',[$id,'Not Paid']);
-        return view('viewFine', ['fine'=>$fine]);
+        return view('viewFineStud', ['fine'=>$fine]);
     }
 
 }

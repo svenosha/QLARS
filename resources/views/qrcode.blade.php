@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>QLARS</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Styles -->
@@ -25,9 +25,11 @@
             $output_file = 'C:\xampp\htdocs\QLARS\QLARS\storage\app\public\img\qr-code\lit.svg';
             file_put_contents($output_file, $qrcode);
             
+            
                 
 
         ?>
+        <a href = "/registerBook"><button type="submit" class="btn btn-sm btn-info">Return</button></a>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

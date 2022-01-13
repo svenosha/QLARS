@@ -36,7 +36,7 @@
                         <img src="../img/editacc.jpg" alt="Textbook Status" style="width:100px;height:100px;">
                             <br>
                         
-                            <a href="{{ url('/viewFine') }}" type ="button">View Fine for Returned Books</a>
+                            <a href="{{ url('/viewFineStud') }}" type ="button">View Fine for Returned Books</a>
                         
                         </div>
                     </div>

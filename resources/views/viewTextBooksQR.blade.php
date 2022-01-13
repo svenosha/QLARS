@@ -40,12 +40,8 @@
                   </table>
                 </div>
 
-                <a href="{{ url('/prnpriview') }}" class="btnprn btn">Print Preview</a></center>
-                <script type="text/javascript">
-                $(document).ready(function(){
-                $('.btnprn').printPage();
-                });
-                </script>
+                <button onclick="window.print()">Print Preview</button>
+                
             </div>
         </div>
     </div>

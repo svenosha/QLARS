@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Print Textbook QR') }}</div>
+                <div class="card-header">{{ __('Textbook Status') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +15,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table">
+                    <table id="std_table" class="table">
                     <thead>
                       <tr>
                         <th scope="col">Subject</th>
@@ -48,5 +48,10 @@
         </div>
     </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $('#std_table').DataTable();
+} );
+ </script>
 @endsection
 

@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table">
+                    <table id="std_table" class="table">
                     <thead>
                       <tr>
                         <th scope="col">Name</th>
@@ -46,6 +46,11 @@
         </div>
     </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $('#std_table').DataTable();
+} );
+ </script>
 @endsection
 
 

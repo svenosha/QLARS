@@ -38,7 +38,7 @@ class manageReturnLendController extends Controller
             $TbCon =$request->input('TbCon');
             $fine=array('TbID'=>$TBookID,'StdID'=>$StdID,'TbCon'=>$TbCon);
             DB::table('fines')->insert($fine);
-            return redirect()->back();
+            return redirect()->back()->withInput();
             }
             else{
                 $TBookID = $request->input('TBookID');
@@ -46,7 +46,7 @@ class manageReturnLendController extends Controller
                 $TbCon =$request->input('TbCon');
                 $fine=array('TbID'=>$TBookID,'StdID'=>$StdID,'TbCon'=>$TbCon);
                 DB::table('fines')->insert($fine);
-                return redirect()->back();
+                return redirect()->back()->withInput();
             }
     }
 }

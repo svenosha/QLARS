@@ -24,7 +24,7 @@ Route::get('/manageAccount', function () {
 });
 Auth::routes();
 Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('admin')->middleware('admin');
-Route::get('/student_dsahboard', 'App\Http\Controllers\Student\DashboardController@index')->name('student')->middleware('student');
+Route::get('/student_dashboard', 'App\Http\Controllers\Student\DashboardController@index')->name('student')->middleware('student');
 /* Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->middleware('role:admin');
 Route::get('/student_dashboard', 'App\Http\Controllers\Student\DashboardController@index')->middleware('role:student'); */
 
@@ -92,14 +92,8 @@ Route::get('/manageTextbookS', function () {
 });
 Route::get('studTBStatus', 'App\Http\Controllers\manageTextbookController@stdlend');
 
-Route::get('/viewFine', 'App\Http\Controllers\manageTextbookController@viewFine');
+Route::get('viewFineStud', 'App\Http\Controllers\manageTextbookController@viewFineStud');
 
-Route::get('/payFine', 'App\Http\Controllers\managePaymentController@viewFine');
-
-
-Route::get('/confirmPayment', function () {
-    return view('confirmPayment');
-});
 
 
 // Route::post('/', 'App\Http\Controllers\managePaymentController@updateFine')->name('updateFine'); 
