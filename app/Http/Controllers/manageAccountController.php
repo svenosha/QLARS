@@ -27,6 +27,10 @@ class manageAccountController extends Controller
         $stud1=array('name'=>$StdName,'password'=>$StdPassword,'email'=>$StdEmail);
         DB::table('users')->insert($stud1);
         DB::table('students')->insert($stud);
+        DB::table('users')
+            ->join('students', 'students.StdEmail', '=', 'users.email')
+            ->where('email', $StdEmail)
+            ->update(['users.id' => DB::raw('students.id')]);
         echo "Record Succesfully Inserted<br/>";
         echo '<a href = "/insert"> Click Here</a> to go back';
     }
