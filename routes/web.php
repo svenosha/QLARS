@@ -61,6 +61,8 @@ Route::get('/textbookStatus', 'App\Http\Controllers\manageTextbookController@ind
 
 Route::get('/viewStudFine', 'App\Http\Controllers\manageTextbookController@viewStudFine');
 Route::get('viewFine/{id}', 'App\Http\Controllers\manageTextbookController@viewFines');
+Route::get('paidFine/{id}', 'App\Http\Controllers\manageTextbookController@paidFines');
+Route::get('/finepaid/{id}', 'App\Http\Controllers\manageTextbookController@finepaid');
 
 Route::get('/manageReturnLend', function () {
     return view('manageReturnLend');

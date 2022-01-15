@@ -21,6 +21,7 @@
                         <th scope="col">Form</th>
                         <th scope="col">Condition</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Fine</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                         <td>{{ $row->TbForm }}</td>
                         <td>{{ $row->TbCon }}</td>
                         <td>{{ $row->TbPrice }}</td>
+                        <td>{{ $row->TbFine }}</td>
                         </tr>
                      @endforeach
                     </tbody>

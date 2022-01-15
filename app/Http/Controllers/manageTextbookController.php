@@ -79,10 +79,23 @@ class manageTextbookController extends Controller
     public function viewFines($id)
 
     {
-        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine=?',[$id,'Not Paid']);
+        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine =?',[$id,'Not Paid']);
         return view('viewFine', ['fine'=>$fine]);
     }
+
+    public function paidFines($id)
+
+    {
+        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine =?',[$id,'Paid']);
+        return view('paidFine', ['fine'=>$fine]);
+    }
     
+    public function finepaid($id) {
+
+        DB::update('update fines set TbFine= ? where TbID = ?',['Paid',$id]);
+        echo "Record updated successfully.<br/>";
+        echo '<a href = "/viewStudFine">Click Here</a> to go back.';
+     }
 
     //Students
 
@@ -103,7 +116,7 @@ class manageTextbookController extends Controller
     public function viewFineStud()
     {
         $id= Auth::id();
-        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine=?',[$id,'Not Paid']);
+        $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =?',[$id]);
         return view('viewFineStud', ['fine'=>$fine]);
     }
 

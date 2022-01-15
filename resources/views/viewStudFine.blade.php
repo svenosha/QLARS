@@ -32,7 +32,8 @@
                         <td>{{ $row->StdClass }}</td>
                         <td>{{ $row->StdEmail }}</td>
                         <td>{{ $row->StdPhone }}</td>
-                        <td><a href= 'viewFine/{{ $row->id}}' class="btn btn-primary">View</a></td>
+                        <td><a href= 'viewFine/{{ $row->id}}' class="btn btn-primary">Not Paid</a></td>
+                        <td><a href= 'paidFine/{{ $row->id}}' class="btn btn-primary">Paid</a></td>
                       </tr>
                      @endforeach
                     </tbody>

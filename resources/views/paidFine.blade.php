@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('View UnPaid Fine For Textbook Borrowed') }}</div>
+                <div class="card-header">{{ __('View Paid Fine For Textbook Borrowed') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -32,7 +32,6 @@
                         <td>{{ $row->TbCon }}</td>
                         <td>{{ $row->TbPrice }}</td>
                         <td>{{ $row->TbFine}}</td>
-                        <td><a href='/finepaid/{{ $row->id}}' class="btn btn-primary">Done</a></td>
                         </tr>
                      @endforeach
                     </tbody>
