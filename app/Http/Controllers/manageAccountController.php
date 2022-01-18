@@ -15,7 +15,7 @@ class manageAccountController extends Controller
     //view student registration form
     public function insertform(){
         $stud = Students::all();
-        return view ('registerStud', ['stud' => $stud]);
+        return view ('manageAccount.registerStud', ['stud' => $stud]);
     }
     public function insert(Request $request){
         $StdName = $request->input('name');
@@ -38,20 +38,20 @@ class manageAccountController extends Controller
     public function index()
     {
         $students = DB::select('select * from students');
-        return view('viewStudents', ['students'=>$students]);
+        return view('manageAccount.viewStudents', ['students'=>$students]);
     }
 
     public function edit()
     {
         $students = DB::select('select * from students');
-        return view('editAccount', ['students'=>$students]);
+        return view('manageAccount.editAccount', ['students'=>$students]);
     }
 
     public function editStd($id)
 
     {
         $students = DB::select('select* from students where id =?',[$id]);
-        return view('editStd',['students'=>$students]);
+        return view('manageAccount.editStd',['students'=>$students]);
     }
 
     public function updateStd(Request $request, $id)
@@ -80,7 +80,7 @@ class manageAccountController extends Controller
 
     {
         $students = DB::select('select * from books where StdID =?',[$id]);
-        return view('lendTB',['students'=>$students]);
+        return view('manageAccount.lendTB',['students'=>$students]);
 
     }
 
@@ -95,7 +95,7 @@ class manageAccountController extends Controller
     {
         $id= Auth::id();
         $students = DB::select('select * from students where id =?',[$id]);
-        return view('viewAccount', ['students'=>$students]);
+        return view('manageAccount.student.viewAccount', ['students'=>$students]);
     }
 
  

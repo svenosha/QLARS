@@ -16,7 +16,7 @@ class manageTextbookController extends Controller
 {
     public function index(){
         $book = DB::select('select * from books where TbGen= ? order by id desc',['No']);
-        return view ('registerBook', ['book' => $book]);
+        return view ('manageTextbook.registerBook', ['book' => $book]);
     }
 
     public function store(Request $request){
@@ -54,7 +54,7 @@ class manageTextbookController extends Controller
 
         $book = Book::all();
 
-        return view('qrcode',compact('qrcode'));
+        return view('manageTextbook.qrcode',compact('qrcode'));
         //$output_file = '..app/public/img/qr-code/img-' . $id . '.png';
         //Storage::disk('local')->put($output_file, $qrcode); //storage/app/public/img/qr-code/img-1557309130.png
     }
@@ -62,32 +62,32 @@ class manageTextbookController extends Controller
     public function index1()
      {
          $tbooks = DB::select('select books.*, qrbooks.* from books join qrbooks on books.id = qrbooks.id');
-         return view('viewTextBooksQR', ['tbooks'=>$tbooks]);
+         return view('manageTextbook.viewTextBooksQR', ['tbooks'=>$tbooks]);
      }
 
      public function index2(){
         $tbooks = DB::select('select * from books');
-        return view ('textbookStatus', ['tbooks' => $tbooks]);
+        return view ('manageTextbook.textbookStatus', ['tbooks' => $tbooks]);
     }
 
     public function viewStudFine()
     {
         $students = DB::select('select * from students');
-        return view('viewStudFine', ['students'=>$students]);
+        return view('manageTextbook.viewStudFine', ['students'=>$students]);
     }
 
     public function viewFines($id)
 
     {
         $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine =?',[$id,'Not Paid']);
-        return view('viewFine', ['fine'=>$fine]);
+        return view('manageTextbook.viewFine', ['fine'=>$fine]);
     }
 
     public function paidFines($id)
 
     {
         $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =? and fines.TbFine =?',[$id,'Paid']);
-        return view('paidFine', ['fine'=>$fine]);
+        return view('manageTextbook.paidFine', ['fine'=>$fine]);
     }
     
     public function finepaid($id) {
@@ -109,7 +109,7 @@ class manageTextbookController extends Controller
     {
         $id= Auth::id();
         $tbooks = DB::select('select * from books where StdID =?',[$id]);
-        return view('studTBStatus',['tbooks'=>$tbooks]);
+        return view('manageTextbook.student.studTBStatus',['tbooks'=>$tbooks]);
 
     }
     
@@ -117,7 +117,7 @@ class manageTextbookController extends Controller
     {
         $id= Auth::id();
         $fine = DB::select('select fines.*, books.* from fines join books on fines.TbID = books.id where fines.StdID =?',[$id]);
-        return view('viewFineStud', ['fine'=>$fine]);
+        return view('manageTextbook.student.viewFineStud', ['fine'=>$fine]);
     }
 
 }
