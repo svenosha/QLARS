@@ -14,10 +14,18 @@ class manageReturnLendController extends Controller
         
         $TBookID=$request->TBookID;
         $StdID=$request->StdID;
+        $fined = DB::select('select * from fines where StdID =? and TbFine =?',[$StdID,'Not Paid']);
+
+        if($fined){
+            echo "Please Settle Your Fine <br/>";
+            echo '<a href = "/manageReturnLend"> Click Here</a> to go back';
+    }   
+    else{
         $update = DB::table('books')
                 ->where('id', $TBookID)
                 ->update(['StdID'=> $StdID,'TBStatus'=>'Lend']);
                 return redirect()->back()->withInput();
+    }
     }
 
     public function return(Request $request){
