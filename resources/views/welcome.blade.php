@@ -1,89 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
+@section('content')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway';
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-            .full-height {
-                height: 100vh;
-            }
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-            .position-ref {
-                position: relative;
-            }
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-            .content {
-                text-align: center;
-            }
-            .title {
-                font-size: 84px;
-            }
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            @if (Route::has('login') && Auth::check())
-                <div class="top-right links">
-                    <a href="{{ url('/home') }}">Dashboard</a>
-                </div>
-            @elseif (Route::has('login') && !Auth::check())
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://codecasts.com.br">CODECASTS [pt-BR]</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/codecasts/laravel">GitHub</a>
-                </div>
-            </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <center>
+            <img src="../img/logo.png" alt="HTML5 Icon" style="width:400px;height:400px;">
+            <table style=" width:100%; background-color:#4287f5; color:white;">
+            <tr>
+                <td style="border:1px solid white; padding:30px;"><center> Find Us
+                    <br>
+                    <br>
+                    SMK ENTABUAN TENOM 
+                    <br>
+                    SABAH MALAYSIA </td>
+                <td style="border:1px solid white; padding:30px;"><center> What Are We
+                    <br>
+                    <br>
+                    We are the Textbook Lending 
+                    <br>and 
+                    <br>Returning System Made For SMK Entabuan
+                </td>
+                <td style="border:1px solid white; padding:30px;"><center> Contact Us
+                    <br>
+                    <br>
+                    012345678
+                    <br>
+                    qlars@gmail.com
+                </td>
+            </tr>
+</table>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+@endsection
