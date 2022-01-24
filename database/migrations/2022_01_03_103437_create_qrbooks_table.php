@@ -16,7 +16,6 @@ class CreateQrbooksTable extends Migration
         Schema::create('qrbooks', function (Blueprint $table) {
             $table->id();
             $table->longText('QRCode');
-
             $table->timestamps();
         });
     }

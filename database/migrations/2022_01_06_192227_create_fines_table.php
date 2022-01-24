@@ -18,6 +18,7 @@ class CreateFinesTable extends Migration
             $table->string('TbCon');
             $table->string('StdID');
             $table->string('TbID');
+            $table->string('TbFine')->default('Not Paid');
             $table->timestamps();
         });
     }

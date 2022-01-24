@@ -21,7 +21,8 @@ class CreateBooksTable extends Migration
             $table->bigInteger('TbForm');
             $table->float('TbPrice');
             $table->string('StdID')->nullable();
-            $table->string('TbStatus')->nullable();
+            $table->string('TbStatus')->default('New');
+            $table->string('TbGen')->default('No');
             $table->timestamps();
         });
     }
